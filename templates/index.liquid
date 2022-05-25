@@ -1,27 +1,3 @@
-{% assign collection = collections[ 'all' ] %}
-
-<h1>{{ collection.title }}</h1>
-
-<table style="border: 1px solid black;">
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Price</th>
-  </tr>
-{% for product in collection.products %}
-  <tr>
-    <td>{{ product.id }}</td>
-    <td><a style="color:{{ settings.link_color }};" href="{{ product.url }}">{{ product.title }}</a></td>
-    <td>{{ product.price | money }}</td>
-
-    {% if product.available == true %}
-      <td>Product avalible</td>
-    {% else %}
-      <td><b>SOLD OUT</b></td>
-    {% endif %}
-
-  </tr>
-{% endfor %}
-</table><br/>
+{% section 'all-products' %}
 
 <small>Your default message is: <b>"{{ settings.text }}"</b></small>

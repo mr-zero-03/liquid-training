@@ -1,0 +1,46 @@
+{% assign collection = collections[ 'all' ] %}
+
+<h1>{{ collection.title }}</h1>
+
+<table style="border: 1px solid black;">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Price</th>
+  </tr>
+{% for product in collection.products %}
+  {% if section.settings.show_soldout == true or section.settings.show_soldout == false and product.available == true %}
+    <tr>
+      <td>{{ product.id }}</td>
+      <td><a style="color:{{ settings.link_color }};" href="{{ product.url }}">{{ product.title }}</a></td>
+      <td>{{ product.price | money }}</td>
+
+    {% if section.settings.show_soldout == true %}
+      {% if product.available == true %}
+        <td>Product avalible</td>
+      {% else %}
+        <td><b>SOLD OUT</b></td>
+      {% endif %}
+    {% endif %}
+
+  </tr>
+  {% endif %}
+{% endfor %}
+</table><br/>
+
+<p>You selected <b>show_soldout</b> as: <code>{{ section.settings.show_soldout }}</code></p>
+
+
+{% schema %}
+  {
+    "name": "All the Products",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_soldout",
+        "label": "Show Sold Out Products",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}
