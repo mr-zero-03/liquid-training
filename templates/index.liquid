@@ -1,2 +1,8 @@
-{% assign variable = 5 | plus: 3 %}
-{{ variable | plus: 2 }}
+{% assign arrayString = "Mike,Carlos,Pedro,Alfonso,Juan" %}
+{% assign array = arrayString | split: "," %}
+
+<ul>
+{% for name in array %}
+  <li>{{ name }}</li>
+{% endfor %}
+</ul>
