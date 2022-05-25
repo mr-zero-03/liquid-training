@@ -1,6 +1,13 @@
 {
-  "current": "Default",
+  "current": {
+    "link_color": "#ff0000",
+    "text": "Saluton Mondo!",
+    "content_for_index": [
+
+    ]
+  },
   "presets": {
-    "Default": { }
+    "Default": {
+    }
   }
 }
