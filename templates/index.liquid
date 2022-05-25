@@ -11,7 +11,7 @@
 {% for product in collection.products %}
   <tr>
     <td>{{ product.id }}</td>
-    <td><a href="{{ product.url }}">{{ product.title }}</a></td>
+    <td><a style="color:{{ settings.link_color }};" href="{{ product.url }}">{{ product.title }}</a></td>
     <td>{{ product.price | money }}</td>
 
     {% if product.available == true %}
@@ -22,4 +22,6 @@
 
   </tr>
 {% endfor %}
-</table>
+</table><br/>
+
+<small>Your default message is: <b>"{{ settings.text }}"</b></small>
