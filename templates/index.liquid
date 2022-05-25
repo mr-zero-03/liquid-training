@@ -1,10 +1,25 @@
-{% assign arrayString = "Mike,Carlos,Pedro,Alfonso,Juan" %}
-{% assign array = arrayString | split: "," %}
+{% assign collection = collections[ 'all' ] %}
 
-<ul>
-{% for name in array %}
-  {% if name.size < 5 %}
-    <li>{{ name }}</li>
-  {% endif %}
+<h1>{{ collection.title }}</h1>
+
+<table style="border: 1px solid black;">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Price</th>
+  </tr>
+{% for product in collection.products %}
+  <tr>
+    <td>{{ product.id }}</td>
+    <td><a href="{{ product.url }}">{{ product.title }}</a></td>
+    <td>{{ product.price | money }}</td>
+
+    {% if product.available == true %}
+      <td>Product avalible</td>
+    {% else %}
+      <td><b>SOLD OUT</b></td>
+    {% endif %}
+
+  </tr>
 {% endfor %}
-</ul>
+</table>
